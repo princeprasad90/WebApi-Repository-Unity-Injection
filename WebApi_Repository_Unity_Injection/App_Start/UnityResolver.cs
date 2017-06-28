@@ -7,7 +7,7 @@ using System.Web.Http.Dependencies;
 
 namespace WebApi_Repository_Unity_Injection.App_Start
 {
-    public class UnityResolver: IDependencyResolver
+    public class UnityResolver : IDependencyResolver
     {
         protected IUnityContainer container;
 

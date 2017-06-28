@@ -21,7 +21,7 @@ namespace WebApi_Repository_Unity_Injection.Controllers
             this._EmployeeRepository = EmployeeRepository;
         }
         // GET: api/Employees
-        public IQueryable<Employee> GetEmployees()
+        public IList<Employee> GetEmployees()
         {
             return _EmployeeRepository.GetEmployees();
         }

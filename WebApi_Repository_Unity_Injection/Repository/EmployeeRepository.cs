@@ -8,15 +8,11 @@ namespace WebApi_Repository_Unity_Injection
 {
     public class EmployeeRepository : IEmployeeRepository, IDisposable
     {
-        private MyDatabaseEntities db;
-        public EmployeeRepository(MyDatabaseEntities context)
-        {
-            this.db = context;
-        }
+        MyDatabaseEntities db = new MyDatabaseEntities();
 
-        public IQueryable<Employee> GetEmployees()
+        public IList<Employee> GetEmployees()
         {
-            return db.Employees.AsQueryable();
+            return db.Employees.ToList();
         }
 
         public void InsertEmployee(Employee employee)
