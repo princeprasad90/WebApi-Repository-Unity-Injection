@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SaloonAmaxModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Catg_ID" />
+    </Key>
+    <Property Name="Catg_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Catg_Name_EN" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="Catg_Name_AR" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="Catg_Order" Type="Int64" />
+    <NavigationProperty Name="Services" Relationship="Self.FK_Service_Category" FromRole="Category" ToRole="Service" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Country_ID" />
+    </Key>
+    <Property Name="Country_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Country_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Country_Name_EN" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="Country_Name_AR" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="States" Relationship="Self.FK_State_Country" FromRole="Country" ToRole="State" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Country" FromRole="Country" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Saloon">
+    <Key>
+      <PropertyRef Name="Salons_ID" />
+    </Key>
+    <Property Name="Salons_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Salons_Name_EN" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="Salons_Name_AR" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="Salons_LogoHex" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Salons_State_ID" Type="Int64" />
+    <Property Name="Salons_City" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
+    <Property Name="Salons_Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Salons_Logitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Salons_Details_EN" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+    <Property Name="Salons_Details_AR" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+    <Property Name="Salons_Country_ID" Type="Int64" />
+    <Property Name="Salons_Country_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Salons_Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Salons_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Salons_Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Salons_OS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Salons_Last_Login" Type="DateTime" Precision="3" />
+    <Property Name="Salons_Entered_On" Type="DateTime" Precision="3" />
+    <Property Name="Salons_Pwd_Rest_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Salons_Pwd_Rest_Code_Entered" Type="DateTime" Precision="3" />
+    <Property Name="Salons_IsActive" Type="Boolean" />
+    <NavigationProperty Name="Saloons_Category" Relationship="Self.FK_Saloons_Category_Saloons" FromRole="Saloons" ToRole="Saloons_Category" />
+  </EntityType>
+  <EntityType Name="Saloons_Category">
+    <Key>
+      <PropertyRef Name="Salons_Ctg_ID" />
+    </Key>
+    <Property Name="Salons_Ctg_ID" Type="Int64" Nullable="false" />
+    <Property Name="Salons_Ctg_Catg_ID" Type="Int64" />
+    <Property Name="Salons_Ctg_Salons_ID" Type="Int64" />
+    <NavigationProperty Name="Saloon" Relationship="Self.FK_Saloons_Category_Saloons" FromRole="Saloons_Category" ToRole="Saloons" />
+    <NavigationProperty Name="Saloons_Category_Service" Relationship="Self.FK_Saloons_Category_Service_Saloons_Category" FromRole="Saloons_Category" ToRole="Saloons_Category_Service" />
+  </EntityType>
+  <EntityType Name="Saloons_Category_Service">
+    <Key>
+      <PropertyRef Name="Salons_Ctg_Srvc_ID" />
+    </Key>
+    <Property Name="Salons_Ctg_Srvc_ID" Type="Int64" Nullable="false" />
+    <Property Name="Salons_Ctg_ID" Type="Int64" />
+    <Property Name="Salons_Serv_ID" Type="Int64" />
+    <NavigationProperty Name="Saloons_Category" Relationship="Self.FK_Saloons_Category_Service_Saloons_Category" FromRole="Saloons_Category_Service" ToRole="Saloons_Category" />
+    <NavigationProperty Name="Service" Relationship="Self.FK_Saloons_Category_Service_Service" FromRole="Saloons_Category_Service" ToRole="Service" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="Serv_ID" />
+    </Key>
+    <Property Name="Serv_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Serv_Catg_ID" Type="Int64" />
+    <Property Name="Serv_Name_EN" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="Serv_Name_AR" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="Serv_Order" Type="Int64" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Service_Category" FromRole="Service" ToRole="Category" />
+    <NavigationProperty Name="Saloons_Category_Service" Relationship="Self.FK_Saloons_Category_Service_Service" FromRole="Service" ToRole="Saloons_Category_Service" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="State_ID" />
+    </Key>
+    <Property Name="State_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="State_Country_ID" Type="Int64" />
+    <Property Name="State_Name_EN" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="State_Name_AR" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_State_Country" FromRole="State" ToRole="Country" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_State" FromRole="State" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Fname" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="User_Lname" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="User_State_ID" Type="Int64" />
+    <Property Name="User_City" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="User_Country_ID" Type="Int64" />
+    <Property Name="User_Country_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="User_Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="User_Img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="User_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="User_Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="User_SocialMedia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="User_SocialMediaID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="User_OS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="User_Email_Verify" Type="Boolean" />
+    <Property Name="User_Mobile_Verify" Type="Boolean" />
+    <Property Name="User_Email_Verify_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="User_Mobile_Verify_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="User_Pwd_Rest_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="User_Pwd_Rest_Code_Entered" Type="DateTime" Precision="3" />
+    <Property Name="User_Last_Login" Type="DateTime" Precision="3" />
+    <Property Name="User_Entered_On" Type="DateTime" Precision="3" />
+    <Property Name="User_Updated_on" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_Users_Country" FromRole="Users" ToRole="Country" />
+    <NavigationProperty Name="State" Relationship="Self.FK_Users_State" FromRole="Users" ToRole="State" />
+  </EntityType>
+  <Association Name="FK_Service_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Service" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Catg_ID" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="Serv_Catg_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_State_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="State" Type="Self.State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Country_ID" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="State_Country_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Country_ID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="User_Country_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Saloons_Category_Saloons">
+    <End Role="Saloons" Type="Self.Saloon" Multiplicity="0..1" />
+    <End Role="Saloons_Category" Type="Self.Saloons_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saloons">
+        <PropertyRef Name="Salons_ID" />
+      </Principal>
+      <Dependent Role="Saloons_Category">
+        <PropertyRef Name="Salons_Ctg_Salons_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Saloons_Category_Service_Saloons_Category">
+    <End Role="Saloons_Category" Type="Self.Saloons_Category" Multiplicity="0..1" />
+    <End Role="Saloons_Category_Service" Type="Self.Saloons_Category_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saloons_Category">
+        <PropertyRef Name="Salons_Ctg_ID" />
+      </Principal>
+      <Dependent Role="Saloons_Category_Service">
+        <PropertyRef Name="Salons_Ctg_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Saloons_Category_Service_Service">
+    <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+    <End Role="Saloons_Category_Service" Type="Self.Saloons_Category_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="Serv_ID" />
+      </Principal>
+      <Dependent Role="Saloons_Category_Service">
+        <PropertyRef Name="Salons_Serv_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_State">
+    <End Role="State" Type="Self.State" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="State_ID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="User_State_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SaloonAmaxEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Countries" EntityType="Self.Country" />
+    <EntitySet Name="Saloons" EntityType="Self.Saloon" />
+    <EntitySet Name="Saloons_Category" EntityType="Self.Saloons_Category" />
+    <EntitySet Name="Saloons_Category_Service" EntityType="Self.Saloons_Category_Service" />
+    <EntitySet Name="Services" EntityType="Self.Service" />
+    <EntitySet Name="States" EntityType="Self.State" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Service_Category" Association="Self.FK_Service_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Service" EntitySet="Services" />
+    </AssociationSet>
+    <AssociationSet Name="FK_State_Country" Association="Self.FK_State_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="State" EntitySet="States" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Country" Association="Self.FK_Users_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Saloons_Category_Saloons" Association="Self.FK_Saloons_Category_Saloons">
+      <End Role="Saloons" EntitySet="Saloons" />
+      <End Role="Saloons_Category" EntitySet="Saloons_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Saloons_Category_Service_Saloons_Category" Association="Self.FK_Saloons_Category_Service_Saloons_Category">
+      <End Role="Saloons_Category" EntitySet="Saloons_Category" />
+      <End Role="Saloons_Category_Service" EntitySet="Saloons_Category_Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Saloons_Category_Service_Service" Association="Self.FK_Saloons_Category_Service_Service">
+      <End Role="Service" EntitySet="Services" />
+      <End Role="Saloons_Category_Service" EntitySet="Saloons_Category_Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_State" Association="Self.FK_Users_State">
+      <End Role="State" EntitySet="States" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SaloonAmaxModelStoreContainer" CdmEntityContainer="SaloonAmaxEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="SaloonAmaxModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="Catg_ID" ColumnName="Catg_ID" />
+          <ScalarProperty Name="Catg_Name_EN" ColumnName="Catg_Name_EN" />
+          <ScalarProperty Name="Catg_Name_AR" ColumnName="Catg_Name_AR" />
+          <ScalarProperty Name="Catg_Order" ColumnName="Catg_Order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="SaloonAmaxModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="Country_ID" ColumnName="Country_ID" />
+          <ScalarProperty Name="Country_Code" ColumnName="Country_Code" />
+          <ScalarProperty Name="Country_Name_EN" ColumnName="Country_Name_EN" />
+          <ScalarProperty Name="Country_Name_AR" ColumnName="Country_Name_AR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Saloons">
+      <EntityTypeMapping TypeName="SaloonAmaxModel.Saloon">
+        <MappingFragment StoreEntitySet="Saloons">
+          <ScalarProperty Name="Salons_ID" ColumnName="Salons_ID" />
+          <ScalarProperty Name="Salons_Name_EN" ColumnName="Salons_Name_EN" />
+          <ScalarProperty Name="Salons_Name_AR" ColumnName="Salons_Name_AR" />
+          <ScalarProperty Name="Salons_LogoHex" ColumnName="Salons_LogoHex" />
+          <ScalarProperty Name="Salons_State_ID" ColumnName="Salons_State_ID" />
+          <ScalarProperty Name="Salons_City" ColumnName="Salons_City" />
+          <ScalarProperty Name="Salons_Latitude" ColumnName="Salons_Latitude" />
+          <ScalarProperty Name="Salons_Logitude" ColumnName="Salons_Logitude" />
+          <ScalarProperty Name="Salons_Details_EN" ColumnName="Salons_Details_EN" />
+          <ScalarProperty Name="Salons_Details_AR" ColumnName="Salons_Details_AR" />
+          <ScalarProperty Name="Salons_Country_ID" ColumnName="Salons_Country_ID" />
+          <ScalarProperty Name="Salons_Country_Code" ColumnName="Salons_Country_Code" />
+          <ScalarProperty Name="Salons_Mobile" ColumnName="Salons_Mobile" />
+          <ScalarProperty Name="Salons_Email" ColumnName="Salons_Email" />
+          <ScalarProperty Name="Salons_Password" ColumnName="Salons_Password" />
+          <ScalarProperty Name="Salons_OS" ColumnName="Salons_OS" />
+          <ScalarProperty Name="Salons_Last_Login" ColumnName="Salons_Last_Login" />
+          <ScalarProperty Name="Salons_Entered_On" ColumnName="Salons_Entered_On" />
+          <ScalarProperty Name="Salons_Pwd_Rest_Code" ColumnName="Salons_Pwd_Rest_Code" />
+          <ScalarProperty Name="Salons_Pwd_Rest_Code_Entered" ColumnName="Salons_Pwd_Rest_Code_Entered" />
+          <ScalarProperty Name="Salons_IsActive" ColumnName="Salons_IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Saloons_Category">
+      <EntityTypeMapping TypeName="SaloonAmaxModel.Saloons_Category">
+        <MappingFragment StoreEntitySet="Saloons_Category">
+          <ScalarProperty Name="Salons_Ctg_ID" ColumnName="Salons_Ctg_ID" />
+          <ScalarProperty Name="Salons_Ctg_Catg_ID" ColumnName="Salons_Ctg_Catg_ID" />
+          <ScalarProperty Name="Salons_Ctg_Salons_ID" ColumnName="Salons_Ctg_Salons_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Saloons_Category_Service">
+      <EntityTypeMapping TypeName="SaloonAmaxModel.Saloons_Category_Service">
+        <MappingFragment StoreEntitySet="Saloons_Category_Service">
+          <ScalarProperty Name="Salons_Ctg_Srvc_ID" ColumnName="Salons_Ctg_Srvc_ID" />
+          <ScalarProperty Name="Salons_Ctg_ID" ColumnName="Salons_Ctg_ID" />
+          <ScalarProperty Name="Salons_Serv_ID" ColumnName="Salons_Serv_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Services">
+      <EntityTypeMapping TypeName="SaloonAmaxModel.Service">
+        <MappingFragment StoreEntitySet="Service">
+          <ScalarProperty Name="Serv_ID" ColumnName="Serv_ID" />
+          <ScalarProperty Name="Serv_Catg_ID" ColumnName="Serv_Catg_ID" />
+          <ScalarProperty Name="Serv_Name_EN" ColumnName="Serv_Name_EN" />
+          <ScalarProperty Name="Serv_Name_AR" ColumnName="Serv_Name_AR" />
+          <ScalarProperty Name="Serv_Order" ColumnName="Serv_Order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="SaloonAmaxModel.State">
+        <MappingFragment StoreEntitySet="State">
+          <ScalarProperty Name="State_ID" ColumnName="State_ID" />
+          <ScalarProperty Name="State_Country_ID" ColumnName="State_Country_ID" />
+          <ScalarProperty Name="State_Name_EN" ColumnName="State_Name_EN" />
+          <ScalarProperty Name="State_Name_AR" ColumnName="State_Name_AR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="SaloonAmaxModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="User_Fname" ColumnName="User_Fname" />
+          <ScalarProperty Name="User_Lname" ColumnName="User_Lname" />
+          <ScalarProperty Name="User_State_ID" ColumnName="User_State_ID" />
+          <ScalarProperty Name="User_City" ColumnName="User_City" />
+          <ScalarProperty Name="User_Country_ID" ColumnName="User_Country_ID" />
+          <ScalarProperty Name="User_Country_Code" ColumnName="User_Country_Code" />
+          <ScalarProperty Name="User_Mobile" ColumnName="User_Mobile" />
+          <ScalarProperty Name="User_Img" ColumnName="User_Img" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="User_SocialMedia" ColumnName="User_SocialMedia" />
+          <ScalarProperty Name="User_SocialMediaID" ColumnName="User_SocialMediaID" />
+          <ScalarProperty Name="User_OS" ColumnName="User_OS" />
+          <ScalarProperty Name="User_Email_Verify" ColumnName="User_Email_Verify" />
+          <ScalarProperty Name="User_Mobile_Verify" ColumnName="User_Mobile_Verify" />
+          <ScalarProperty Name="User_Email_Verify_Code" ColumnName="User_Email_Verify_Code" />
+          <ScalarProperty Name="User_Mobile_Verify_Code" ColumnName="User_Mobile_Verify_Code" />
+          <ScalarProperty Name="User_Pwd_Rest_Code" ColumnName="User_Pwd_Rest_Code" />
+          <ScalarProperty Name="User_Pwd_Rest_Code_Entered" ColumnName="User_Pwd_Rest_Code_Entered" />
+          <ScalarProperty Name="User_Last_Login" ColumnName="User_Last_Login" />
+          <ScalarProperty Name="User_Entered_On" ColumnName="User_Entered_On" />
+          <ScalarProperty Name="User_Updated_on" ColumnName="User_Updated_on" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

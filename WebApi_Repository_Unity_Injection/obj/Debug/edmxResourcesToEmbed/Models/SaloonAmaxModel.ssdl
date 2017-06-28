@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SaloonAmaxModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Catg_ID" />
+    </Key>
+    <Property Name="Catg_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Catg_Name_EN" Type="nchar" MaxLength="200" />
+    <Property Name="Catg_Name_AR" Type="nchar" MaxLength="200" />
+    <Property Name="Catg_Order" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Country_ID" />
+    </Key>
+    <Property Name="Country_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Country_Code" Type="varchar" MaxLength="50" />
+    <Property Name="Country_Name_EN" Type="nchar" MaxLength="200" />
+    <Property Name="Country_Name_AR" Type="nchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Saloons">
+    <Key>
+      <PropertyRef Name="Salons_ID" />
+    </Key>
+    <Property Name="Salons_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Salons_Name_EN" Type="nchar" MaxLength="200" />
+    <Property Name="Salons_Name_AR" Type="nchar" MaxLength="200" />
+    <Property Name="Salons_LogoHex" Type="varchar(max)" />
+    <Property Name="Salons_State_ID" Type="bigint" />
+    <Property Name="Salons_City" Type="nchar" MaxLength="300" />
+    <Property Name="Salons_Latitude" Type="varchar" MaxLength="50" />
+    <Property Name="Salons_Logitude" Type="varchar" MaxLength="50" />
+    <Property Name="Salons_Details_EN" Type="nchar" MaxLength="1000" />
+    <Property Name="Salons_Details_AR" Type="nchar" MaxLength="1000" />
+    <Property Name="Salons_Country_ID" Type="bigint" />
+    <Property Name="Salons_Country_Code" Type="varchar" MaxLength="50" />
+    <Property Name="Salons_Mobile" Type="varchar" MaxLength="50" />
+    <Property Name="Salons_Email" Type="varchar" MaxLength="100" />
+    <Property Name="Salons_Password" Type="varchar" MaxLength="100" />
+    <Property Name="Salons_OS" Type="varchar" MaxLength="50" />
+    <Property Name="Salons_Last_Login" Type="datetime" />
+    <Property Name="Salons_Entered_On" Type="datetime" />
+    <Property Name="Salons_Pwd_Rest_Code" Type="varchar" MaxLength="100" />
+    <Property Name="Salons_Pwd_Rest_Code_Entered" Type="datetime" />
+    <Property Name="Salons_IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Saloons_Category">
+    <Key>
+      <PropertyRef Name="Salons_Ctg_ID" />
+    </Key>
+    <Property Name="Salons_Ctg_ID" Type="bigint" Nullable="false" />
+    <Property Name="Salons_Ctg_Catg_ID" Type="bigint" />
+    <Property Name="Salons_Ctg_Salons_ID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Saloons_Category_Service">
+    <Key>
+      <PropertyRef Name="Salons_Ctg_Srvc_ID" />
+    </Key>
+    <Property Name="Salons_Ctg_Srvc_ID" Type="bigint" Nullable="false" />
+    <Property Name="Salons_Ctg_ID" Type="bigint" />
+    <Property Name="Salons_Serv_ID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="Serv_ID" />
+    </Key>
+    <Property Name="Serv_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Serv_Catg_ID" Type="bigint" />
+    <Property Name="Serv_Name_EN" Type="nchar" MaxLength="200" />
+    <Property Name="Serv_Name_AR" Type="nchar" MaxLength="200" />
+    <Property Name="Serv_Order" Type="bigint" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="State_ID" />
+    </Key>
+    <Property Name="State_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="State_Country_ID" Type="bigint" />
+    <Property Name="State_Name_EN" Type="nchar" MaxLength="200" />
+    <Property Name="State_Name_AR" Type="nchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Fname" Type="nchar" MaxLength="200" />
+    <Property Name="User_Lname" Type="nchar" MaxLength="200" />
+    <Property Name="User_State_ID" Type="bigint" />
+    <Property Name="User_City" Type="nchar" MaxLength="200" />
+    <Property Name="User_Country_ID" Type="bigint" />
+    <Property Name="User_Country_Code" Type="varchar" MaxLength="10" />
+    <Property Name="User_Mobile" Type="varchar" MaxLength="50" />
+    <Property Name="User_Img" Type="varchar(max)" />
+    <Property Name="User_Email" Type="varchar" MaxLength="100" />
+    <Property Name="User_Password" Type="varchar" MaxLength="100" />
+    <Property Name="User_SocialMedia" Type="varchar" MaxLength="50" />
+    <Property Name="User_SocialMediaID" Type="varchar" MaxLength="200" />
+    <Property Name="User_OS" Type="varchar" MaxLength="50" />
+    <Property Name="User_Email_Verify" Type="bit" />
+    <Property Name="User_Mobile_Verify" Type="bit" />
+    <Property Name="User_Email_Verify_Code" Type="varchar" MaxLength="50" />
+    <Property Name="User_Mobile_Verify_Code" Type="varchar" MaxLength="50" />
+    <Property Name="User_Pwd_Rest_Code" Type="varchar" MaxLength="50" />
+    <Property Name="User_Pwd_Rest_Code_Entered" Type="datetime" />
+    <Property Name="User_Last_Login" Type="datetime" />
+    <Property Name="User_Entered_On" Type="datetime" />
+    <Property Name="User_Updated_on" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_Saloons_Category_Saloons">
+    <End Role="Saloons" Type="Self.Saloons" Multiplicity="0..1" />
+    <End Role="Saloons_Category" Type="Self.Saloons_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saloons">
+        <PropertyRef Name="Salons_ID" />
+      </Principal>
+      <Dependent Role="Saloons_Category">
+        <PropertyRef Name="Salons_Ctg_Salons_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Saloons_Category_Service_Saloons_Category">
+    <End Role="Saloons_Category" Type="Self.Saloons_Category" Multiplicity="0..1" />
+    <End Role="Saloons_Category_Service" Type="Self.Saloons_Category_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saloons_Category">
+        <PropertyRef Name="Salons_Ctg_ID" />
+      </Principal>
+      <Dependent Role="Saloons_Category_Service">
+        <PropertyRef Name="Salons_Ctg_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Saloons_Category_Service_Service">
+    <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+    <End Role="Saloons_Category_Service" Type="Self.Saloons_Category_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="Serv_ID" />
+      </Principal>
+      <Dependent Role="Saloons_Category_Service">
+        <PropertyRef Name="Salons_Serv_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Service_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Service" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Catg_ID" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="Serv_Catg_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_State_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="State" Type="Self.State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Country_ID" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="State_Country_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Country_ID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="User_Country_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_State">
+    <End Role="State" Type="Self.State" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="State_ID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="User_State_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SaloonAmaxModelStoreContainer">
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Saloons" EntityType="Self.Saloons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Saloons_Category" EntityType="Self.Saloons_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Saloons_Category_Service" EntityType="Self.Saloons_Category_Service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Saloons_Category_Saloons" Association="Self.FK_Saloons_Category_Saloons">
+      <End Role="Saloons" EntitySet="Saloons" />
+      <End Role="Saloons_Category" EntitySet="Saloons_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Saloons_Category_Service_Saloons_Category" Association="Self.FK_Saloons_Category_Service_Saloons_Category">
+      <End Role="Saloons_Category" EntitySet="Saloons_Category" />
+      <End Role="Saloons_Category_Service" EntitySet="Saloons_Category_Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Saloons_Category_Service_Service" Association="Self.FK_Saloons_Category_Service_Service">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="Saloons_Category_Service" EntitySet="Saloons_Category_Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Service_Category" Association="Self.FK_Service_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Service" EntitySet="Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_State_Country" Association="Self.FK_State_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="State" EntitySet="State" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Country" Association="Self.FK_Users_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_State" Association="Self.FK_Users_State">
+      <End Role="State" EntitySet="State" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
